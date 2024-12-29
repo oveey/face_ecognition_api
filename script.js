@@ -13,11 +13,12 @@ import setUpInfo from './controllers/setUpInfo.js'
 const db = knex({
     client: 'pg',
     connection: {
-      host: 'dpg-ctno1stumphs73c8adr0-a',
+      host: 'dpg-ctno1stumphs73c8adr0-a.oregon-postgres.render.com',
       port: 5432,
       user: 'oluwalonmuseya',
       password: 'PeW9Uc2TIhGWK8FoFoV0fWBnEXVGTGaY',
       database: 'smart_brain_97bf',
+      ssl: { rejectUnauthorized: false }
     },
   });
 
