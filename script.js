@@ -1,39 +1,52 @@
-import fs from 'fs'
+import express from 'express'
+import bcrypt from 'bcrypt-nodejs'
+import cors from 'cors'
+import knex from 'knex'
+import register from './controllers/register.js'
+import signin from './controllers/signin.js'
 
-function question1(){
-  fs.readFile('./hello.txt', (err, data) => {
-    const direction = data.toString()
-    const directionToArray = direction.split('')
-    const answer = directionToArray.reduce((acc, symbol) => {
-      if(symbol === '('){
-        return acc += 1
-      } else if (symbol === ')'){
-        return acc -= 1
-      } return acc
-    }, 0)
-    console.log(answer)
-  })
-}
+import profile from './controllers/profile.js'
+import image from './controllers/image.js'
+import setUpInfo from './controllers/setUpInfo.js'
+ 
 
-// question1()
+const db = knex({
+    client: 'pg',
+    connection: {
+      host: 'dpg-ctno1stumphs73c8adr0-a',
+      port: 5432,
+      user: 'oluwalonmuseya',
+      password: 'PeW9Uc2TIhGWK8FoFoV0fWBnEXVGTGaY',
+      database: 'smart_brain_97bf',
+    },
+  });
 
-function question2(){
-  fs.readFile('./hello.txt', (err, data) => {
-    const direction = data.toString()
-    const directionToArray = direction.split('')
-    let  accumulator = 0
-    let counter = 0 
-    const answer = directionToArray.some((symbol) => {
-      if(symbol === '('){
-         accumulator += 1
-      } else if (symbol === ')'){
-        accumulator -= 1
-      }  counter++
-      return accumulator < 0
-    })
-    console.log(`floor entered at ${counter}`)
-})}
 
-question2()
 
-// continue your back-end tomorrow
+const app = express()
+app.use(express.json())
+app.use(cors())
+
+
+
+
+app.get('/profile/:id', (req, res)=>{profile(req, res, db)})
+ 
+
+
+app.post('/signin', (req, res) => {signin(req, res, bcrypt, db)});
+  
+
+
+app.post('/register', (req, res) => {register(req, res, bcrypt, db)});
+
+app.put('/image', (req, res) => {image(req, res, db)});
+
+app.post('/setUpInfo', (req, res) => {setUpInfo(req, res)})
+
+const port = process.env.port || 4500
+app.listen(port, () => {
+    `server is running on port ${port}`
+})
+
+// still fighting with the whole deployement , i wil get it
