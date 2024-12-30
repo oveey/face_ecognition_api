@@ -30,7 +30,7 @@ app.use(cors())
 
 
 
-
+app.get('/', (req, res ) => {res.send('hello World')})
 app.get('/profile/:id', (req, res)=>{profile(req, res, db)})
  
 
