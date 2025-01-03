@@ -4,6 +4,12 @@
     if(!name || !email || !password){
         return res.status(400).json('incorrect submission') 
     }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        return res.status(400).json('Invalid email address');
+    }
+    
     const password_hash = bcrypt.hashSync(password)
     
     db.transaction(trx => {
