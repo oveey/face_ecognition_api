@@ -49,4 +49,4 @@ app.listen(port, () => {
     `server is running on port ${port}`
 })
 
-// still fighting with the whole deployement , i wil get it
+// now figthnign with the regex , i need to see why it is changing my request to get after correct register and not post
