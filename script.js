@@ -5,34 +5,29 @@ import knex from 'knex'
 import register from './controllers/register.js'
 import signin from './controllers/signin.js'
 import profile from './controllers/profile.js'
-import image from './controllers/image.js'
-import setUpInfo from './controllers/setUpInfo.js'
+import dotenv from 'dotenv'
  
-
-// const db = knex({
-//     client: 'pg',
-//     connection: {
-//       host: 'dpg-ctno1stumphs73c8adr0-a.oregon-postgres.render.com',
-//       port: 5432,
-//       user: 'oluwalonmuseya',
-//       password: 'PeW9Uc2TIhGWK8FoFoV0fWBnEXVGTGaY',
-//       database: 'smart_brain_97bf',
-//       ssl: { rejectUnauthorized: false }
-//     },
-//   });
+dotenv.config() 
 
 const db = knex({
-  client: "pg",
-  connection: {
-    connectionString: 'postgresql://postgres:LYqEGamBoySjLKgZjHaumQPMfVgGUuvH@postgres.railway.internal:5432/railway', // Use the DATABASE_URL from Railway
-    ssl: { rejectUnauthorized: false }  // Required for Railway
-  },
-});
+    client: 'pg',
+    connection: {
+      host: 'dpg-cvbl0156l47c73af6kl0-a',
+      port: 5432,
+      user: 'crypto_tgzb_user',
+      password: '3xAeyjbBaXpwi6p9SftoJdEJidTqsPKG',
+      database: 'crypto_tgzb',
+      ssl: { rejectUnauthorized: false }
+    },
+  });
+
 
 const app = express()
 app.use(express.json())
 app.use(cors())
 
+
+// host=localhost port=5432 dbname=crypto user=postgres password=xxxxxxx connect_timeout=10 sslmode=prefer
 
 
 app.get('/', (req, res ) => {res.send('hello!!! World')})
