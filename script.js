@@ -10,7 +10,7 @@ import profile from './controllers/profile.js'
 const db = knex({
     client: 'pg',
     connection: {
-      host: 'dpg-cvbl0156l47c73af6kl0-a',
+      host: 'dpg-cvbl0156l47c73af6kl0-a.oregon-postgres.render.com',
       port: 5432,
       user: 'crypto_tgzb_user',
       password: '3xAeyjbBaXpwi6p9SftoJdEJidTqsPKG',
