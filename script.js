@@ -5,7 +5,6 @@ import knex from 'knex'
 import register from './controllers/register.js'
 import signin from './controllers/signin.js'
 import profile from './controllers/profile.js'
-import dotenv from 'dotenv'
  
 
 const db = knex({
@@ -29,7 +28,7 @@ app.use(cors())
 // host=localhost port=5432 dbname=crypto user=postgres password=xxxxxxx connect_timeout=10 sslmode=prefer
 
 
-app.get('/', (req, res ) => {res.send('hello!!! World')})
+app.get('/', (req, res ) => {res.send('hello!! World')})
 app.get('/profile/:id', (req, res)=>{profile(req, res, db)})
  
 
