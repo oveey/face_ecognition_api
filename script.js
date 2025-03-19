@@ -7,7 +7,6 @@ import signin from './controllers/signin.js'
 import profile from './controllers/profile.js'
 import dotenv from 'dotenv'
  
-dotenv.config() 
 
 const db = knex({
     client: 'pg',
